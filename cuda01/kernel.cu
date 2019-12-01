@@ -16,8 +16,8 @@ cudaError_t addWithCuda(int *inputVec1, int *inputVec2, int *outputVec, unsigned
 __global__ void addKernel(int *inputVec1, int *inputVec2, int *outputVec)
 {
 	
-	int i = threadIdx.x + blockIdx.x * blockDim.x;
-    outputVec[i] = inputVec1[i] + inputVec2[i];
+	int x = threadIdx.x + blockIdx.x * blockDim.x;
+    outputVec[x] = inputVec1[x] + inputVec2[x];
 }
 
 int main()
@@ -25,7 +25,7 @@ int main()
 	unsigned int arraySize;
 	cin >> arraySize;
 
-	dim3 gridDims(65000);
+	dim3 gridDims(1);
 	dim3 blockDims(1024);
 
 
